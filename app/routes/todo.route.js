@@ -1,9 +1,2 @@
-const express = require('express')
-const todoRouter = express.Router()
-
-todoRouter.use((req, res, next)=> {
-    console.log('### Schedule SERVER ###')
-    next()
-})
-
-module.exports = todoRouter
+const { write } = require('../controllers/board.controller');
+module.exports = x => x.app.post(`${x.url}/write`, write) ;
