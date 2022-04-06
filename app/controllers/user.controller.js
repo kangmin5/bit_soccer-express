@@ -1,9 +1,13 @@
-const { signup } = require('../services/user.service');
-
+const db = require('../models/index')
+const UserSchema = db.user
 exports.signup = (req, res) => {
-    const { username, password, name, telephone } = req.body
-    console.log(` 넘어온 값: ${JSON.stringify(req.body)}`)
+    new UserSchema({
+        username: req.body.username, 
+        password: req.body.password, 
+        name: req.body.name, 
+        telephone: req.body.telephone
+    }).save(()=>{
+        res.status(200).json({'result':'ok'}) 
+    })
     
-    res.status(200).json(req.body)
-
 }
