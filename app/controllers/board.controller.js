@@ -1,7 +1,8 @@
 const db = require('../models/index')
 const BoardSchema = db.board
 
-exports.write = (req, res) => {
+exports.board = (req, res) => {
+        console.log(' 진행4 : 노드서버에 진입함' + JSON.stringify(req.body))
         new BoardSchema(req.body).save(() => {
                 res.status(200).json({'result':'OK'})
         })

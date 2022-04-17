@@ -1,5 +1,5 @@
 const db = require('../models/index')
-const TodoSchema = db.user
+const TodoSchema = db.todo
 
 exports.todo = (req, res) => {
     console.log('진행4: 노드서버에 진입함' + JSON.stringify(req.body))
