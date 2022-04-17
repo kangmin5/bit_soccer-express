@@ -1,3 +1,6 @@
 const { signup, userlist } = require('../controllers/user.controller');
-module.exports = x => x.app.post(`${x.url}/signup`, signup) ;
-module.exports = x => x.app.get(`${x.url}/list`, userlist);
+module.exports = x => {
+    console.log(' user.route로 들어옴 ')
+    x.app.post(`${x.url}/signup`, signup)
+    x.app.get(`${x.url}/list`, userlist)
+};
