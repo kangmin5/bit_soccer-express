@@ -1,18 +1,18 @@
 const db = require('../models/index')
-const GameSchema = db.game
 
-exports.addgame = (req, res) => {
+const TeamSchema = db.team
+
+exports.addteam = (req, res) => {
     console.log(' 진행4 : 노드서버에 진입함' + JSON.stringify(req.body))
-    new GameSchema(req.body).save(() => {
+    new TeamSchema(req.body).save(() => {
         res.status(200).json({'result': 'ok'})
     })
 }
-
-exports.gamelist = (req, res) => {
+exports.teamlist = (req, res) => {
     console.log(`### gameController access ###`)
-    GameSchema.find()
-        .exec((err, games) => {
+    TeamSchema.find()
+        .exec((err, teams) => {
         if(err) return res.status(400).send(err)
-            res.status(200).json({ success: true, games })
+            res.status(200).json({ success: true, teams })
     })
 }
