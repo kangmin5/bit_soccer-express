@@ -16,3 +16,12 @@ exports.userlist = (req, res) => {
         res.status(200).json({ success: true, users })
     }) 
 } 
+
+exports.login = (req, res) => {
+    console.log(`### user Login access `)
+    UserSchema.find({userid:req.params.id, password:req.params.password})
+    .exec((err, users) => {
+        if (err) return res.status(400).send(err)
+        res.status(200).json({ success:true, users })
+    }) 
+} 

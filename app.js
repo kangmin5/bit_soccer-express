@@ -1,18 +1,23 @@
 require('dotenv').config();
-const cors = require('cors')
 const express = require('express');
 const app = express();
-const { PORT, MONGO_URI } = process.env;
+const { port, MONGO_URI } = process.env;
+const cors = require('cors')
+
+const tokenRouter = require('./app/routes/token');
+app.use('/token', tokenRouter);
+
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors()); 
 const APP = './app/routes'
-// const nodes = ['admin', 'basic', 'board', 'game', 'todo', 'user']
-const nodes = [ 'board', 'todo', 'user','game','team']
+// const nodes = ['admin','basic','board','game','todo','user','team']
+const nodes = ['basic','board','user','todo','team']
 for(const leaf of nodes){
   require(`${APP}/${leaf}.route`)({url:`/api/${leaf}`,app})
 }
+
 const corsOptions = {
   origin: 'http://localhost:3000',
   optionsSuccessStatus: 200 
@@ -26,7 +31,7 @@ db.mongoose
   .catch(err => { console.log(' 몽고DB와 연결 실패', err)
         process.exit();
 });
-app.listen(PORT, () => {
+app.listen(port, () => {
   console.log('***************** ***************** *****************')
   console.log('********** 서버가 정상적으로 실행되고 있습니다 *********')
   console.log('***************** ***************** *****************')

@@ -10,8 +10,9 @@ exports.todo = (req, res) => {
 exports.todolist = (req, res) => {
     console.log(`### todoController access `)
     TodoSchema.find()
-    exec((err, todos) => {
+    .exec((err, todos) => {
         if(err) return res.status(400).send(err)
-        res.status(200).json({success:true,todos})
+        res.status(200).json({ success: true, todos })
+        console.log({  todos })
     })
 }
