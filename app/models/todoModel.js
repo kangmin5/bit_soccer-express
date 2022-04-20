@@ -1,4 +1,5 @@
-module.exports = mongoose => mongoose.model('todo',
+export default function TodoModel(mongoose){
+    mongoose.model('todo',
         mongoose.Schema(
             {
                 userid: String,
@@ -7,3 +8,4 @@ module.exports = mongoose => mongoose.model('todo',
             }, { timestamps: true}
         )
     )
+}

@@ -1,4 +1,5 @@
-module.exports = mongoose => mongoose.model('user',
+export default function UserModel(mongoose){
+    mongoose.model('user',
         mongoose.Schema(
             {
                 userid: String,
@@ -11,3 +12,4 @@ module.exports = mongoose => mongoose.model('user',
             }, { timestamps: true}
         )
     )
+}
